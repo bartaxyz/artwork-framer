@@ -1,0 +1,15 @@
+
+# Blender files
+*.blend1
+
+# Output files
+output
+
+# Python
+__pycache__
+
+# MacOS files
+.DS_Store
+
+# Visual Studio Code
+.vscode
