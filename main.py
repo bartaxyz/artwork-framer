@@ -1,7 +1,6 @@
 import bpy
 import os
 import sys
-import logging
 
 # we get blend file path
 filepath = bpy.data.filepath
@@ -93,11 +92,7 @@ def load_image(image_path):
                 tex_image_node.image = new_image
 
     width, height = get_image_dimensions(image_path)
-    logging.warning(width)
-    logging.warning(height)
     aspect_ratio = width / height
-    logging.error(aspect_ratio)
-
     amount_to_move = (1 - aspect_ratio) * 4
 
     # Adjust frame & picture
