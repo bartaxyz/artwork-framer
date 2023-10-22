@@ -2,4 +2,4 @@ import bpy
 
 
 def gltf_exporter(export_path):
-    bpy.ops.export_scene.gltf(filepath=export_path, export_format='GLTF_EMBEDDED')
+    bpy.ops.export_scene.gltf(filepath=export_path, export_format='GLTF_EMBEDDED', export_apply=True)
