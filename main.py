@@ -98,7 +98,7 @@ def load_image(image_path):
     aspect_ratio = width / height
     logging.error(aspect_ratio)
 
-    amount_to_move = (1 - aspect_ratio) * 2
+    amount_to_move = (1 - aspect_ratio) * 4
 
     # Adjust frame & picture
     adjust(amount_to_move)
