@@ -2,6 +2,9 @@
 # Blender files
 *.blend1
 
+# Environment variables
+.env
+
 # Output files
 output
 
