@@ -66,7 +66,13 @@ The script works by moving the top vertices of the frame upwards to match the as
 
 - If you make any changes to the frame, you might need to reassign the vertices at the top of the frame to the `Top Frame Edge` vertex group.
 
+| <img width="822" alt="Screenshot 2023-10-23 at 22 37 08" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/f4b36d3c-a924-4128-97af-b5faab5c61e0"> | <img width="250" alt="Screenshot 2023-10-23 at 22 37 02" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/06d0fc2e-ac0e-4eea-9f48-99a0ee62b873"> |
+| --- | --- |
+
 - If you make any changes to the picture, you might need to reassign the vertices at the top of the picture to the `Top Picture Edge` vertex group.
+
+| <img width="831" alt="Screenshot 2023-10-23 at 22 35 00" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/b71bf0bd-d01b-4502-a845-732e0d151ad6"> | <img width="251" alt="Screenshot 2023-10-23 at 22 34 46" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/1be3ed9d-a96d-40c6-a461-21709d9d315c"> |
+| --- | --- |
 
 ## Contributing
 
