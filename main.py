@@ -11,7 +11,7 @@ dir = os.path.dirname(filepath)
 # we append our path to blender modules path
 # we use if not statement to do this one time only
 if not dir in sys.path:
-   sys.path.append(dir)
+    sys.path.append(dir)
 
 from src.constants import FRAME_OBJECT_NAME, PICTURE_OBJECT_NAME, PICTURE_MATERIAL_NAME, PICTURE_MATERIAL_TEXTURE_NAME, TOP_FRAME_EDGE_VERTEX_GROUP, TOP_PICTURE_EDGE_VERTEX_GROUP
 from src.utils.get_image_dimensions import get_image_dimensions
@@ -19,6 +19,7 @@ from src.exporters.exporter import exporter
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
+
 
 def init():
     # Set object mode
@@ -39,7 +40,8 @@ def adjust_frame(amount_to_move):
     if TOP_FRAME_EDGE_VERTEX_GROUP in obj.vertex_groups:
         vgroup = obj.vertex_groups[TOP_FRAME_EDGE_VERTEX_GROUP]
     else:
-        raise Exception("Vertex group " + TOP_FRAME_EDGE_VERTEX_GROUP + " not found!")
+        raise Exception("Vertex group " +
+                        TOP_FRAME_EDGE_VERTEX_GROUP + " not found!")
 
     # Iterate over vertices and manipulate those belonging to the vertex group
     for v in obj.data.vertices:
@@ -56,7 +58,8 @@ def adjust_picture(amount_to_move):
     if TOP_PICTURE_EDGE_VERTEX_GROUP in obj.vertex_groups:
         vgroup = obj.vertex_groups[TOP_PICTURE_EDGE_VERTEX_GROUP]
     else:
-        raise Exception("Vertex group " + TOP_PICTURE_EDGE_VERTEX_GROUP + " not found!")
+        raise Exception("Vertex group " +
+                        TOP_PICTURE_EDGE_VERTEX_GROUP + " not found!")
 
     # Iterate over vertices and manipulate those belonging to the vertex group
     for v in obj.data.vertices:
@@ -64,6 +67,7 @@ def adjust_picture(amount_to_move):
             if g.group == vgroup.index:
                 # Move vertex along the Z-axis
                 v.co.y += amount_to_move
+
 
 def adjust(amount_to_move):
     adjust_frame(amount_to_move)
@@ -85,7 +89,8 @@ def load_image(image_path):
             tex_image_node = nodes.get(PICTURE_MATERIAL_TEXTURE_NAME)
 
             if tex_image_node is None:
-                raise Exception("'" + PICTURE_MATERIAL_TEXTURE_NAME + "' node not found!")
+                raise Exception(
+                    "'" + PICTURE_MATERIAL_TEXTURE_NAME + "' node not found!")
             else:
                 # Update the image
                 new_image = bpy.data.images.load(filepath=image_path)
@@ -93,7 +98,9 @@ def load_image(image_path):
 
     width, height = get_image_dimensions(image_path)
     aspect_ratio = width / height
-    amount_to_move = (1 - aspect_ratio) * 4
+    default_plane_width = 2
+    amount_to_move = (default_plane_width *
+                      (1 / aspect_ratio)) - default_plane_width
 
     # Adjust frame & picture
     adjust(amount_to_move)
@@ -108,11 +115,11 @@ def process_images(input_folder, output_folder):
     filetypes = ['.jpg', '.jpeg', '.png']
 
     format = "gltf"
-    
+
     for filename in os.listdir(input_folder):
         if filename.endswith(tuple(filetypes)):
             print(f"Processing {filename}...")
-            
+
             input_path = os.path.join(input_folder, filename)
             output_filename = os.path.splitext(filename)[0] + "." + format
             output_path = os.path.join(output_folder, output_filename)
@@ -126,8 +133,8 @@ def process_images(input_folder, output_folder):
 
 if __name__ == "__main__":
     init()
-    
-    script_dir = os.path.dirname(os.path.abspath(__file__))  # Assuming you have this line
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     input_folder = os.path.join(script_dir, 'input')
     output_folder = os.path.join(script_dir, 'output')
 
