@@ -16,11 +16,33 @@ Embedding images into a 3D frame using Blender. It scales the frame according to
 
 ## Usage
 
-First, install the required Python packages:
+There are two main ways to run the script: via command line or inside Blender.
 
+The command line method is preferred, since it's the easiest to set up and use. The Blender method is useful if you want to make changes to the script and test them out.
+
+Regardless, the script will process all images in the `input/` directory and store the resulting models in the `output/` directory (by default in GLTF format).
+
+_Currently, the format is hard-coded in the script. You can find it in the `main.py` file if you want to change it (`CMD + F` and `Ctrl + F` are your friends)._
+
+### Running the Script via Command Line (preferred)
+
+#### Prerequisites
+
+There are a couple of steps to make this all work.
+
+1. Find out your Blender path ([check official Blender docs for instructions](https://docs.blender.org/manual/en/latest/advanced/command_line/launch/index.html))
+2. Create `.env`, and set `BLENDER_PATH` to the path you found in step 1.
+3. You might need to make the script executable: `chmod +x artwork-framer.sh`
+
+#### Running the Script
+
+Once you're set up, you can run the script.
+
+```bash
+./artwork-framer.sh
 ```
-pip install -r requirements.txt
-```
+
+This will process all the images, and you should see the output models in the `output/` directory.
 
 ### Running the Script Inside Blender
 
@@ -28,17 +50,23 @@ pip install -r requirements.txt
 - Open the main.py script in Blender's text editor.
 - Run the script.
 
-### Running the Script via Command Line
-
-Run the following command to process all images in the input_images/ folder:
-
-```
-blender frame.blend --background --python main.py
-```
-
 ## Batch Processing
 
 To run batch processing of images, simply place all images in the `input/` directory before running the script. The script will process all images and store the output models in `output/`.
+
+## Changing the frame
+
+If you want to change the frame, you can do so by opening the `frame.blend` file in Blender and making the changes you want.
+
+The script works by moving the top vertices of the frame upwards to match the aspect ratio of the input image. This means that the frame object must be a rectangle, and you need to follow a couple of rules.
+
+- Keep the frame & picture objects named `Frame` & `Picture` respectively.
+
+- Keep the dimensions of the `Picture` object to `2 x 2` (the default). _You can change the depth of the picture (Y axis), but the width and height must remain the same._
+
+- If you make any changes to the frame, you might need to reassign the vertices at the top of the frame to the `Top Frame Edge` vertex group.
+
+- If you make any changes to the picture, you might need to reassign the vertices at the top of the picture to the `Top Picture Edge` vertex group.
 
 ## Contributing
 
