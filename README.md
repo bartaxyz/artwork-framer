@@ -2,6 +2,8 @@
 
 Embedding images into a 3D frame using Blender. It scales the frame according to the aspect ratio of each input image and exports the resulting model.
 
+![untitled](https://github.com/bartaxyz/artwork-framer/assets/4202010/bbf475e3-ac4d-40b8-97ac-43e5c0ad870d)
+
 ## Requirements
 
 - Blender
