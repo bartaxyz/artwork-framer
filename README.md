@@ -12,21 +12,21 @@ Embedding image files (.png, .jpg, etc.) into a 3D frame using Blender. It scale
 ## File Structure
 
 - `input/`: Folder containing images to be processed.
-- `output/`: Folder where processed USDZ models will be stored.
+- `output/`: Folder where processed models will be stored.
 - `frame.blend`: Blender file containing the 3D frame model.
 - `main.py`: Python script that handles image embedding, frame scaling, and USDZ export.
 
 ## Usage
 
-There are two main ways to run the script: via command line or inside Blender.
+There are two main ways to run the script: via the command line or inside Blender.
 
-The command line method is preferred, since it's the easiest to set up and use. The Blender method is useful if you want to make changes to the script and test them out.
+The command line method is preferred since it's the easiest to set up and use. The Blender method is useful if you want to make changes to the script and test them out.
 
 Regardless, the script will process all images in the `input/` directory and store the resulting models in the `output/` directory (by default in GLTF format).
 
 _Currently, the format is hard-coded in the script. You can find it in the `main.py` file if you want to change it (`CMD + F` and `Ctrl + F` are your friends)._
 
-### Running the Script via Command Line (preferred)
+### Running the Script via the Command Line (preferred)
 
 #### Prerequisites
 
@@ -38,7 +38,7 @@ There are a couple of steps to make this all work.
 
 #### Running the Script
 
-Once you're set up, you can run the script.
+Once you're set-up, you can run the script.
 
 ```bash
 ./artwork-framer.sh
@@ -66,12 +66,12 @@ The script works by moving the top vertices of the frame upwards to match the as
 
 - Keep the dimensions of the `Picture` object to `2 x 2` (the default). _You can change the depth of the picture (Y axis), but the width and height must remain the same._
 
-- If you make any changes to the frame, you might need to reassign the vertices at the top of the frame to the `Top Frame Edge` vertex group.
+- If you make any changes to the frame, you may need to reassign the vertices at the top of the frame to the `Top Frame Edge` vertex group.
 
 | <img width="822" alt="Screenshot 2023-10-23 at 22 37 08" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/f4b36d3c-a924-4128-97af-b5faab5c61e0"> | <img width="250" alt="Screenshot 2023-10-23 at 22 37 02" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/06d0fc2e-ac0e-4eea-9f48-99a0ee62b873"> |
 | --- | --- |
 
-- If you make any changes to the picture, you might need to reassign the vertices at the top of the picture to the `Top Picture Edge` vertex group.
+- If you make any changes to the picture, you may need to reassign the vertices at the top of the picture to the `Top Picture Edge` vertex group.
 
 | <img width="831" alt="Screenshot 2023-10-23 at 22 35 00" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/b71bf0bd-d01b-4502-a845-732e0d151ad6"> | <img width="251" alt="Screenshot 2023-10-23 at 22 34 46" src="https://github.com/bartaxyz/artwork-framer/assets/4202010/1be3ed9d-a96d-40c6-a461-21709d9d315c"> |
 | --- | --- |
