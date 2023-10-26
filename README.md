@@ -6,8 +6,7 @@ Embedding image files (.png, .jpg, etc.) into a 3D frame using Blender. It scale
 
 ## Requirements
 
-- Blender
-- Python 3.x
+- Blender v3.x _(tested on v3.2.2)_
 
 ## File Structure
 
