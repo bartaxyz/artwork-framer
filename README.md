@@ -13,7 +13,9 @@ Embedding image files (.png, .jpg, etc.) into a 3D frame using Blender. It scale
 - `input/`: Folder containing images to be processed.
 - `output/`: Folder where processed models will be stored.
 - `frame.blend`: Blender file containing the 3D frame model.
-- `main.py`: Python script that handles image embedding, frame scaling, and USDZ export.
+- `artwork-framer.sh`: Shell script that runs the Python script.
+- `main.py`: Python script that processes the images and exports the models.
+- `src/exporters`: Contains the exporters for different file formats (not all of them currently work correctly, if in doubt, default to GLTF).
 
 ## Usage
 
