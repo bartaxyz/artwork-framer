@@ -74,6 +74,18 @@ def adjust(amount_to_move):
     adjust_picture(amount_to_move)
 
 
+def adjust_scale(new_scale):
+    frame_obj = bpy.data.collections['Scene'].objects[FRAME_OBJECT_NAME]
+    frame_obj.scale.x = new_scale
+    frame_obj.scale.y = new_scale
+    frame_obj.scale.z = new_scale
+
+    picture_obj = bpy.data.collections['Scene'].objects[PICTURE_OBJECT_NAME]
+    picture_obj.scale.x = new_scale
+    picture_obj.scale.y = new_scale
+    picture_obj.scale.z = new_scale
+
+
 def load_image(image_path):
     # Load image into picture object texture
     obj = bpy.data.objects.get(PICTURE_OBJECT_NAME)
@@ -104,6 +116,10 @@ def load_image(image_path):
 
     # Adjust frame & picture
     adjust(amount_to_move)
+
+    # Adjust scale
+    scale = 0.5
+    adjust_scale(scale)
 
     return amount_to_move
 
