@@ -146,10 +146,8 @@ def load_image(image_path):
     adjust_scale(scale)
 
     # Adjust label
-    # Get label from command line argument
-    argument_label = sys.argv[sys.argv.index("--artwork-label") + 1] if "--artwork-label" in sys.argv else ""
-    # Strip --artwork-label from argument_label
-    argument_label = argument_label.replace("--artwork-label=", "").strip()
+    # Get --artwork-label from command line argument
+    argument_label = sys.argv[sys.argv.index("--artwork_label") + 1]
     adjust_label(argument_label)
 
     return amount_to_move

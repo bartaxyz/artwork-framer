@@ -15,8 +15,19 @@ if [ -z "$BLENDER_PATH" ]; then
   exit 1
 fi
 
+# Parse arguments
+while [ $# -gt 0 ]; do
+
+   if [[ $1 == --* ]]; then
+     v="${1/--/}"
+     declare ${v}="$2"
+   fi
+
+  shift
+done
+
 # Get --artwork-label argument
-ARTWORK_LABEL=$1
+ARTWORK_LABEL=${artwork_label:-""}
 
 # Execute the Blender command
-$BLENDER_PATH -b $(pwd)/frame.blend -P $(pwd)/main.py -- --artwork-label $ARTWORK_LABEL
+$BLENDER_PATH -b $(pwd)/frame.blend -P $(pwd)/main.py -- --artwork_label $ARTWORK_LABEL

@@ -47,6 +47,14 @@ Once you're set-up, you can run the script.
 
 This will process all the images, and you should see the output models in the `output/` directory.
 
+#### `--artwork_label <TEXT>`
+
+Add a label to the artwork 3D model. This will be displayed in the Blender scene.
+
+```bash
+./artwork-framer.sh --artwork_label "My Artwork"
+```
+
 ### Running the Script Inside Blender
 
 - Open frame.blend in Blender.
