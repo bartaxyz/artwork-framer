@@ -15,5 +15,8 @@ if [ -z "$BLENDER_PATH" ]; then
   exit 1
 fi
 
+# Get --artwork-label argument
+ARTWORK_LABEL=$1
+
 # Execute the Blender command
-$BLENDER_PATH -b $(pwd)/frame.blend -P $(pwd)/main.py
+$BLENDER_PATH -b $(pwd)/frame.blend -P $(pwd)/main.py -- --artwork-label $ARTWORK_LABEL
