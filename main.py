@@ -13,7 +13,7 @@ dir = os.path.dirname(filepath)
 if not dir in sys.path:
     sys.path.append(dir)
 
-from src.constants import FRAME_OBJECT_NAME, PICTURE_OBJECT_NAME, PICTURE_MATERIAL_NAME, PICTURE_MATERIAL_TEXTURE_NAME, TOP_FRAME_EDGE_VERTEX_GROUP, TOP_PICTURE_EDGE_VERTEX_GROUP
+from src.constants import FRAME_OBJECT_NAME, PICTURE_OBJECT_NAME, ARTWORK_LABEL_OBJECT_NAME, PICTURE_MATERIAL_NAME, PICTURE_MATERIAL_TEXTURE_NAME, TOP_FRAME_EDGE_VERTEX_GROUP, TOP_PICTURE_EDGE_VERTEX_GROUP
 from src.utils.get_image_dimensions import get_image_dimensions
 from src.exporters.exporter import exporter
 
@@ -73,6 +73,8 @@ def adjust(amount_to_move):
     adjust_frame(amount_to_move)
     adjust_picture(amount_to_move)
 
+original_artwork_label_x = 0
+original_artwork_label_z = 0
 
 def adjust_scale(new_scale):
     frame_obj = bpy.data.collections['Scene'].objects[FRAME_OBJECT_NAME]
@@ -85,6 +87,28 @@ def adjust_scale(new_scale):
     picture_obj.scale.y = new_scale
     picture_obj.scale.z = new_scale
 
+    artwork_label_obj = bpy.data.collections['Scene'].objects[ARTWORK_LABEL_OBJECT_NAME]
+    artwork_label_obj.scale.x = new_scale
+    artwork_label_obj.scale.y = new_scale
+    artwork_label_obj.scale.z = new_scale
+
+    # Adjust artwork label location
+    global original_artwork_label_x
+    global original_artwork_label_z
+
+    if original_artwork_label_x == 0:
+        original_artwork_label_x = artwork_label_obj.location.x * new_scale
+
+    if original_artwork_label_z == 0:
+        original_artwork_label_z = artwork_label_obj.location.z * new_scale
+
+    artwork_label_obj.location.x = original_artwork_label_x
+    artwork_label_obj.location.z = original_artwork_label_z
+
+
+def adjust_label(label_text = ""):
+    label = bpy.data.collections['Scene'].objects['Artwork Label']
+    label.data.body = label_text
 
 def load_image(image_path):
     # Load image into picture object texture
@@ -120,6 +144,11 @@ def load_image(image_path):
     # Adjust scale
     scale = 0.5
     adjust_scale(scale)
+
+    # Adjust label
+    # Get --artwork-label from command line argument
+    argument_label = sys.argv[sys.argv.index("--artwork_label") + 1]
+    adjust_label(argument_label)
 
     return amount_to_move
 
